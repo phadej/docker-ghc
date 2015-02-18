@@ -34,13 +34,10 @@ ENV PATH /opt/ghc/bin:$PATH
 RUN mkdir -p /usr/src/cabal
 WORKDIR /usr/src/cabal
 
-COPY bootstrap.sh.patch /usr/src/cabal/bootstrap.sh.patch
-
-RUN curl --silent -O https://www.haskell.org/cabal/release/cabal-install-1.18.0.8/cabal-install-1.18.0.8.tar.gz \
-  && echo '914fbde460d5769868002b8652568b53e9ec4545ed584a3e19494311fddba7fb  cabal-install-1.18.0.8.tar.gz' | sha256sum -c - \
-  && tar --strip-component=1 -xzf cabal-install-1.18.0.8.tar.gz \
-  && rm cabal-install-1.18.0.8.tar.gz \
-  && patch -u bootstrap.sh bootstrap.sh.patch \
+RUN curl --silent -O https://www.haskell.org/cabal/release/cabal-install-1.22.0.0/cabal-install-1.22.0.0.tar.gz \
+  && echo '5f9a8d4cb4d75ac8c350eed09fe7c35dace3e8a71f123c61a392ab9ee7128e9d  cabal-install-1.22.0.0.tar.gz' | sha256sum -c - \
+  && tar --strip-component=1 -xzf cabal-install-1.22.0.0.tar.gz \
+  && rm cabal-install-1.22.0.0.tar.gz \
   && PREFIX=/opt/ghc /usr/src/cabal/bootstrap.sh --global \
   && rm -rf /usr/src/cabal \
   && cabal --version
