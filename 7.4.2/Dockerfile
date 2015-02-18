@@ -45,7 +45,10 @@ RUN curl --silent -O https://www.haskell.org/cabal/release/cabal-install-1.18.0.
   && tar --strip-component=1 -xzf cabal-install-1.18.0.8.tar.gz \
   && rm cabal-install-1.18.0.8.tar.gz \
   && patch -u bootstrap.sh bootstrap.sh.patch \
-  && PREFIX=/opt/ghc /usr/src/cabal/bootstrap.sh --global \
+  && /usr/src/cabal/bootstrap.sh \
+  && cp /root/.cabal/bin/cabal /opt/ghc/bin \
+  && for pkg in `ghc-pkg --user list  --simple-output`; do ghc-pkg unregister --force $pkg; done \
+  && rm -rf /root/.cabal \
   && rm -rf /usr/src/cabal \
   && cabal --version
 
