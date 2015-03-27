@@ -19,10 +19,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN mkdir -p /usr/src/ghc
 WORKDIR /usr/src/ghc
 
-RUN curl --silent -O https://www.haskell.org/cabal/release/cabal-install-1.22.2.0/cabal-install-1.22.2.0.tar.gz \
-  && echo '25bc2ea88f60bd0f19bf40984ea85491461973895480b8633d87f54aa7ae6adb  cabal-install-1.22.2.0.tar.gz' | sha256sum -c - \
-  && tar --strip-components=1 -xjf ghc-7.10.0.20150316-x86_64-unknown-linux-deb7.tar.bz2 \
-  && rm ghc-7.10.0.20150316-x86_64-unknown-linux-deb7.tar.bz2 \
+RUN curl --silent -O https://downloads.haskell.org/~ghc/7.10.1/ghc-7.10.1-x86_64-unknown-linux-deb7.tar.bz2 \
+  && echo '3f513c023dc644220ceaba15e5a5089516968b6553b5227e402f079178acba0a  ghc-7.10.1-x86_64-unknown-linux-deb7.tar.bz2' | sha256sum -c - \
+  && tar --strip-components=1 -xjf ghc-7.10.1-x86_64-unknown-linux-deb7.tar.bz2 \
+  && rm ghc-7.10.1-x86_64-unknown-linux-deb7.tar.bz2 \
   && ./configure --prefix=/opt/ghc \
   && make install \
   && rm -rf /usr/src/ghc \
@@ -34,8 +34,8 @@ ENV PATH /opt/ghc/bin:$PATH
 RUN mkdir -p /usr/src/cabal
 WORKDIR /usr/src/cabal
 
-RUN curl --silent -O https://www.haskell.org/cabal/release/cabal-install-1.22.0.0/cabal-install-1.22.0.0.tar.gz \
-  && echo '5f9a8d4cb4d75ac8c350eed09fe7c35dace3e8a71f123c61a392ab9ee7128e9d  cabal-install-1.22.0.0.tar.gz' | sha256sum -c - \
+RUN curl --silent -O https://www.haskell.org/cabal/release/cabal-install-1.22.2.0/cabal-install-1.22.2.0.tar.gz \
+  && echo '25bc2ea88f60bd0f19bf40984ea85491461973895480b8633d87f54aa7ae6adb  cabal-install-1.22.2.0.tar.gz' | sha256sum -c - \
   && tar --strip-component=1 -xzf cabal-install-1.22.0.0.tar.gz \
   && rm cabal-install-1.22.0.0.tar.gz \
   && /usr/src/cabal/bootstrap.sh \
