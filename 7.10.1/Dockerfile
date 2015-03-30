@@ -36,8 +36,8 @@ WORKDIR /usr/src/cabal
 
 RUN curl --silent -O https://www.haskell.org/cabal/release/cabal-install-1.22.2.0/cabal-install-1.22.2.0.tar.gz \
   && echo '25bc2ea88f60bd0f19bf40984ea85491461973895480b8633d87f54aa7ae6adb  cabal-install-1.22.2.0.tar.gz' | sha256sum -c - \
-  && tar --strip-component=1 -xzf cabal-install-1.22.0.0.tar.gz \
-  && rm cabal-install-1.22.0.0.tar.gz \
+  && tar --strip-component=1 -xzf cabal-install-1.22.2.0.tar.gz \
+  && rm cabal-install-1.22.2.0.tar.gz \
   && /usr/src/cabal/bootstrap.sh \
   && cp /root/.cabal/bin/cabal /opt/ghc/bin \
   && for pkg in `ghc-pkg --user list  --simple-output`; do ghc-pkg unregister --force $pkg; done \
