@@ -5,7 +5,6 @@
 ## Supported tags and respective Dockerfile links
 
 - [`7.10.1`, `7.10` (7.10.1/Dockerfile)](https://github.com/phadej/docker-ghc/blob/master/7.10.1/Dockerfile)
-- [`7.10.1-rc3` (7.10.1-rc3/Dockerfile)](https://github.com/phadej/docker-ghc/blob/master/7.10.1-rc3/Dockerfile)
 - [`7.10.1-rc2` (7.10.1-rc2/Dockerfile)](https://github.com/phadej/docker-ghc/blob/master/7.10.1-rc2/Dockerfile)
 - [`7.8.4`, `7.8`, `latest` (7.8.4/Dockerfile)](https://github.com/phadej/docker-ghc/blob/master/7.8.4/Dockerfile)
 - [`7.6.3`, `7.6` (7.6.3/Dockerfile)](https://github.com/phadej/docker-ghc/blob/master/7.6.3/Dockerfile)
