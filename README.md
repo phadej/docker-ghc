@@ -4,7 +4,8 @@
 
 ## Supported tags and respective Dockerfile links
 
-- [`7.10.1`, `7.10`, `latest` (7.10.1/Dockerfile)](https://github.com/phadej/docker-ghc/blob/master/7.10.1/Dockerfile)
+- [`7.10.2`, `7.10`, `latest` (7.10.2/Dockerfile)](https://github.com/phadej/docker-ghc/blob/master/7.10.2/Dockerfile)
+- [`7.10.1` (7.10.1/Dockerfile)](https://github.com/phadej/docker-ghc/blob/master/7.10.1/Dockerfile)
 - [`7.10.1-rc2` (7.10.1-rc2/Dockerfile)](https://github.com/phadej/docker-ghc/blob/master/7.10.1-rc2/Dockerfile)
 - [`7.8.4`, `7.8` (7.8.4/Dockerfile)](https://github.com/phadej/docker-ghc/blob/master/7.8.4/Dockerfile)
 - [`7.6.3`, `7.6` (7.6.3/Dockerfile)](https://github.com/phadej/docker-ghc/blob/master/7.6.3/Dockerfile)
@@ -19,4 +20,4 @@ The [Glasgow Haskell Compiler](https://www.haskell.org/ghc/) is a state-of-the-a
 ## Cabal versions:
 
 The cabal-install 1.18.0.8 version (with dependencies from [stackage lts-1.8](http://www.stackage.org/snapshot/lts-1.8)) is used for 7.4, 7.6 and 7.8 branches.
-The cabal-install 1.22.2.0 version (with default dependencies) is used for 7.10 branch.
+The cabal-install 1.22.6.0 version (with default dependencies) is used for 7.10 branch.
