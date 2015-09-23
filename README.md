@@ -11,6 +11,12 @@
 - [`7.6.3`, `7.6` (7.6.3/Dockerfile)](https://github.com/phadej/docker-ghc/blob/master/7.6.3/Dockerfile)
 - [`7.4.2`, `7.4` (7.4.2/Dockerfile)](https://github.com/phadej/docker-ghc/blob/master/7.4.2/Dockerfile)
 
+### Ubuntu images
+
+Using [packages by Herbert V. Riedel](https://launchpad.net/~hvr/+archive/ubuntu/ghc)
+
+- [`7.10.2-ubuntu` (7.10.2-ubuntu/Dockerfile)](https://github.com/phadej/docker-ghc/blob/master/7.10.2-ubuntu/Dockerfile)
+
 ## What is GHC?
 
 The [Glasgow Haskell Compiler](https://www.haskell.org/ghc/) is a state-of-the-art, open source compiler and interactive environment for the functional language Haskell.
