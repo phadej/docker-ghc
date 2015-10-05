@@ -16,6 +16,9 @@
 Using [packages by Herbert V. Riedel](https://launchpad.net/~hvr/+archive/ubuntu/ghc)
 
 - [`7.10.2-ubuntu` (7.10.2-ubuntu/Dockerfile)](https://github.com/phadej/docker-ghc/blob/master/7.10.2-ubuntu/Dockerfile)
+- [`7.8.4-ubuntu` (7.8.4-ubuntu/Dockerfile)](https://github.com/phadej/docker-ghc/blob/master/7.8.4-ubuntu/Dockerfile)
+- [`7.6.3-ubuntu` (7.6.3-ubuntu/Dockerfile)](https://github.com/phadej/docker-ghc/blob/master/7.6.3-ubuntu/Dockerfile)
+- [`7.4.2-ubuntu` (7.4.2-ubuntu/Dockerfile)](https://github.com/phadej/docker-ghc/blob/master/7.4.2-ubuntu/Dockerfile)
 
 ## What is GHC?
 
