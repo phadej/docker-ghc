@@ -1,10 +1,12 @@
-FROM ubuntu:precise
+FROM ubuntu:trusty
 MAINTAINER Oleg Grenrus <oleg.grenrus@iki.fi>
 
 # hvr-ppa
 RUN apt-get -yq update && apt-get -yq --no-install-suggests --no-install-recommends --force-yes install \
     software-properties-common \
     python-software-properties \
+  && apt-key adv --keyserver hkps.pool.sks-keyservers.net --recv-key 9BEFB442 \
+  && apt-add-repository -y 'deb http://download.fpcomplete.com/ubuntu/precise stable main' \
   && apt-add-repository -y "ppa:hvr/ghc" \
   && rm -rf /var/lib/apt/lists/*
 
@@ -20,9 +22,10 @@ RUN apt-get -yq update && apt-get -yq --no-install-suggests --no-install-recomme
     ghc-$GHCVER \
     alex-$ALEXVER \
     happy-$HAPPYVER \
+    stack \
   && rm -rf /var/lib/apt/lists/*
 
-ENV PATH=/opt/ghc/$GHCVER/bin:/opt/cabal/$CABALVER/bin:/opt/happy/$HAPPYVER/bin:/opt/alex/$ALEXVER/bin:$PATH
+ENV PATH=$HOME/.local/bin:/opt/ghc/$GHCVER/bin:/opt/cabal/$CABALVER/bin:/opt/happy/$HAPPYVER/bin:/opt/alex/$ALEXVER/bin:$PATH
 
 # Done
 WORKDIR /root
