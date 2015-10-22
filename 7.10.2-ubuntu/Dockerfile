@@ -23,6 +23,7 @@ RUN apt-get -yq update && apt-get -yq --no-install-suggests --no-install-recomme
     alex-$ALEXVER \
     happy-$HAPPYVER \
     stack \
+    git \
   && rm -rf /var/lib/apt/lists/*
 
 ENV PATH=$HOME/.local/bin:/opt/ghc/$GHCVER/bin:/opt/cabal/$CABALVER/bin:/opt/happy/$HAPPYVER/bin:/opt/alex/$ALEXVER/bin:$PATH

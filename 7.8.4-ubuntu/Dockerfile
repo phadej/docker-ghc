@@ -22,6 +22,7 @@ RUN apt-get -yq update && apt-get -yq --no-install-suggests --no-install-recomme
     ghc-$GHCVER \
     alex-$ALEXVER \
     happy-$HAPPYVER \
+    git \
     stack \
   && rm -rf /var/lib/apt/lists/*
 
