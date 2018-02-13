@@ -1,4 +1,4 @@
-FROM ubuntu:trusty
+FROM ubuntu:xenial
 MAINTAINER Oleg Grenrus <oleg.grenrus@iki.fi>
 
 # hvr-ppa

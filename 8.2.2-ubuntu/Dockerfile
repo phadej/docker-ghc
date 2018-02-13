@@ -2,7 +2,7 @@ FROM ubuntu:xenial
 MAINTAINER Oleg Grenrus <oleg.grenrus@iki.fi>
 
 # hvr-ppa
-RUN apt-get -yq update && apt-get -yq --no-install-suggests --no-install-recommends --force-yes install \
+RUN apt-get -yq update && apt-get -yq --no-install-suggests --no-install-recommends install \
     software-properties-common \
     python-software-properties \
   && apt-key adv --keyserver hkps.pool.sks-keyservers.net --recv-key 9BEFB442 \
@@ -12,12 +12,12 @@ RUN apt-get -yq update && apt-get -yq --no-install-suggests --no-install-recomme
 
 # Environment
 ENV CABALVER=2.0
-ENV GHCVER=8.2.1
+ENV GHCVER=8.2.2
 ENV ALEXVER=3.1.7
 ENV HAPPYVER=1.19.5
 
 # Dependencies
-RUN apt-get -yq update && apt-get -yq --no-install-suggests --no-install-recommends --force-yes install \
+RUN apt-get -yq update && apt-get -yq --no-install-suggests --no-install-recommends install \
     cabal-install-$CABALVER \
     cabal-install-head \
     ghc-$GHCVER \
