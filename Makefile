@@ -7,5 +7,5 @@ all : \
     7.6.3-ubuntu/Dockerfile \
     7.4.2-ubuntu/Dockerfile
 
-%-ubuntu/Dockerfile : gen/hvr-ppa.dockerfile
+%-ubuntu/Dockerfile : gen/hvr-ppa.dockerfile gen/src/Main.hs
 	cabal new-run gen -- hvr-ppa --template gen/hvr-ppa.dockerfile --with-compiler $* --output $@

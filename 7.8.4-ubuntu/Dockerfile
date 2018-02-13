@@ -12,7 +12,7 @@ RUN apt-get -yq update && apt-get -yq --no-install-suggests --no-install-recomme
 
 # Dependencies
 RUN apt-get -yq update && apt-get -yq --no-install-suggests --no-install-recommends install \
-    cabal-install-2.0 \
+    cabal-install-1.18 \
     cabal-install-head \
     ghc-7.8.4 \
     alex-3.1.7 \
@@ -21,7 +21,7 @@ RUN apt-get -yq update && apt-get -yq --no-install-suggests --no-install-recomme
     git \
   && rm -rf /var/lib/apt/lists/*
 
-ENV PATH=$HOME/.local/bin:/opt/ghc/7.8.4/bin:/opt/cabal/2.0/bin:/opt/happy/1.19.5/bin:/opt/alex/3.1.7/bin:$PATH
+ENV PATH=$HOME/.local/bin:/opt/ghc/7.8.4/bin:/opt/cabal/1.18/bin:/opt/happy/1.19.5/bin:/opt/alex/3.1.7/bin:$PATH
 
 # Done
 WORKDIR /root

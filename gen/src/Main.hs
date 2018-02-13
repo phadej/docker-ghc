@@ -49,8 +49,14 @@ hvrPpa = action
             ]
       where
         cv = fromMaybe (mkVersion [2,0]) $ Map.lookup v $ Map.fromList $ execWriter $ do
-            mkVersion [8,2,2] ~> mkVersion [2,0]
-            mkVersion [8,2,1] ~> mkVersion [2,0]
+            mkVersion [8,2,2]  ~> mkVersion [2,0]
+            mkVersion [8,2,1]  ~> mkVersion [2,0]
+            mkVersion [7,10,3] ~> mkVersion [1,22]
+            mkVersion [7,10,2] ~> mkVersion [1,22]
+            mkVersion [7,10,1] ~> mkVersion [1,22]
+            mkVersion [7,8,4]  ~> mkVersion [1,18]
+            mkVersion [7,6,3]  ~> mkVersion [1,16]
+            mkVersion [7,4,2]  ~> mkVersion [1,16]
 
         k ~> v = tell [(k,v)]
 
