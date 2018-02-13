@@ -33,11 +33,15 @@ hvrPpa = action
         [ O.long "with-compiler"
         , O.help "Compiler version"
         ]
+    <*> strOption
+        [ O.long "output"
+        , O.help "Output file"
+        ]
   where
-    action :: FilePath -> Version -> IO ()
-    action tp v = do
+    action :: FilePath -> Version -> FilePath -> IO ()
+    action tp v out = do
         tmpl <- M.compileMustacheFile tp
-        T.putStr $ M.renderMustache tmpl $ object
+        T.writeFile out $ M.renderMustache tmpl $ object
             [ "alexver"  .= ("3.1.7" :: String)
             , "happyver" .= ("1.19.5" :: String)
             , "ghcver"   .= display v
