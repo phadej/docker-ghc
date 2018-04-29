@@ -8,7 +8,9 @@ import Data.Aeson                 (Value (..), object, (.=))
 import Data.Maybe                 (fromMaybe)
 import Distribution.Text          (display, simpleParse)
 import Distribution.Version       (Version, mkVersion)
+import System.Directory           (createDirectoryIfMissing)
 import System.Environment         (getArgs)
+import System.FilePath            (takeDirectory)
 
 import qualified Data.Map            as Map
 import qualified Data.Text.Lazy.IO   as T
@@ -40,6 +42,7 @@ hvrPpa = action
   where
     action :: FilePath -> Version -> FilePath -> IO ()
     action tp v out = do
+        createDirectoryIfMissing True $ takeDirectory out
         tmpl <- M.compileMustacheFile tp
         T.writeFile out $ M.renderMustache tmpl $ object
             [ "alexver"  .= ("3.1.7" :: String)
@@ -49,6 +52,7 @@ hvrPpa = action
             ]
       where
         cv = fromMaybe (mkVersion [2,0]) $ Map.lookup v $ Map.fromList $ execWriter $ do
+            mkVersion [8,4,2]  ~> mkVersion [2,2]
             mkVersion [8,2,2]  ~> mkVersion [2,0]
             mkVersion [8,2,1]  ~> mkVersion [2,0]
             mkVersion [7,10,3] ~> mkVersion [1,22]

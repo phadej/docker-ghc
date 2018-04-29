@@ -1,4 +1,5 @@
 all : \
+    8.4.2-ubuntu/Dockerfile \
     8.2.2-ubuntu/Dockerfile \
     8.2.1-ubuntu/Dockerfile \
     7.10.3-ubuntu/Dockerfile \
