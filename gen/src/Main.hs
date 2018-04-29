@@ -39,9 +39,13 @@ hvrPpa = action
         [ O.long "output"
         , O.help "Output file"
         ]
+    <*> strOption
+        [ O.long "codename"
+        , O.help "Distribution version codename: xenial, bionic"
+        ]
   where
-    action :: FilePath -> Version -> FilePath -> IO ()
-    action tp v out = do
+    action :: FilePath -> Version -> FilePath -> String -> IO ()
+    action tp v out codename = do
         createDirectoryIfMissing True $ takeDirectory out
         tmpl <- M.compileMustacheFile tp
         T.writeFile out $ M.renderMustache tmpl $ object
@@ -49,6 +53,7 @@ hvrPpa = action
             , "happyver" .= ("1.19.5" :: String)
             , "ghcver"   .= display v
             , "cabalver" .= display cv
+            , "codename" .= codename
             ]
       where
         cv = fromMaybe (mkVersion [2,0]) $ Map.lookup v $ Map.fromList $ execWriter $ do
