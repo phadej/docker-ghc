@@ -1,5 +1,6 @@
 all : \
-    8.4.2-ubuntu/Dockerfile \
+    8.6.1-ubuntu/Dockerfile \
+    8.4.3-ubuntu/Dockerfile \
     8.2.2-ubuntu/Dockerfile \
     8.2.1-ubuntu/Dockerfile \
     8.0.2-ubuntu/Dockerfile \
@@ -9,11 +10,11 @@ all : \
     7.6.3-ubuntu/Dockerfile \
     7.4.2-ubuntu/Dockerfile \
     \
-    8.4.2-ubuntu-xenial/Dockerfile \
+    8.4.3-ubuntu-xenial/Dockerfile \
     8.2.2-ubuntu-xenial/Dockerfile \
     8.0.2-ubuntu-xenial/Dockerfile \
     \
-    8.4.2-ubuntu-bionic/Dockerfile \
+    8.4.3-ubuntu-bionic/Dockerfile \
     8.2.2-ubuntu-bionic/Dockerfile \
     8.0.2-ubuntu-bionic/Dockerfile
 
