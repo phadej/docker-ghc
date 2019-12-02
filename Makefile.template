@@ -1,0 +1,26 @@
+.PHONY : generate build push
+
+generate :
+	runghc generate.hs
+
+{% for image in images %}
+build : .build/{{image.params.tag}}
+{% endfor %}
+
+{% for image in images %}
+push : push-{{image.params.tag}}
+{% endfor %}
+
+{% for image in images %}
+push-{{image.params.tag}} :
+	docker push phadej/ghc:{{image.params.tag}}
+{% endfor %}
+
+{% for image in images %}
+.build/{{image.params.tag}} : .build
+	docker build -t phadej/ghc:{{image.params.tag}} {{image.directory}}
+	touch .build/{{image.params.tag}}
+{% endfor %}
+
+.build :
+	mkdir .build
