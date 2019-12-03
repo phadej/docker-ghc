@@ -2,7 +2,7 @@
 ## TAG {{ tag }}
 ##
 {% if slim %}
-FROM       {{from}}:{{distribution}}
+FROM       {% if isDebian %}debian{% else %}ubuntu{% endif %}:{{distribution}}
 {% else %}
 FROM       buildpack-deps:{{distribution}}
 {% endif %}
@@ -11,9 +11,14 @@ FROM       buildpack-deps:{{distribution}}
 ENV LANG C.UTF-8
 
 RUN apt-get update && \
+{% if isDebian %}
     apt-get install -y --no-install-recommends gnupg ca-certificates dirmngr curl git && \
     echo 'deb http://downloads.haskell.org/debian {{distribution}} main' > /etc/apt/sources.list.d/ghc.list && \
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA3CBA3FFE22B574 && \
+{% else %}
+    apt-get install -y --no-install-recommends gnupg ca-certificates dirmngr curl git software-properties-common && \
+    apt-add-repository -y "ppa:hvr/ghc" && \
+{% endif %}
     apt-get update && \
     apt-get install -y --no-install-recommends ghc-{{ghcVersion}} cabal-install-3.0 \
 {% if slim %}

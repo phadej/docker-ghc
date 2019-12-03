@@ -23,9 +23,9 @@ imageDefs = Images
               , Version [8,4,4]
               , Version [8,2,2]
               , Version [8,0,2]
-              , Version [7,10,3]
-              , Version [7,8,4]
-              , Version [7,6,3]
+              -- , Version [7,10,3]
+              -- , Version [7,8,4]
+              -- , Version [7,6,3]
               ]
     ]
   where
@@ -40,9 +40,7 @@ imageDefs = Images
         , pStack        = gv >= Version [8,2] -- I don't know what stack supports
         , pStackVersion = Version [2,1,3]
         , pStackSha256  = "c724b207831fe5f06b087bac7e01d33e61a1c9cad6be0468f9c117d383ec5673"
-        , pFrom         = if dist `elem` [Stretch, Buster]
-                          then "debian"
-                          else "ubuntu"
+        , pIsDebian     = dist `elem` [Stretch, Buster]
         }
       where
         tag = dispVersion (majorVersion gv)
@@ -121,7 +119,7 @@ instance Zinza Distribution where
 data Params = Params
     { pTag          :: String
     , pDistribution :: Distribution
-    , pFrom         :: String --autoset
+    , pIsDebian     :: Bool
     , pGhcVersion   :: Version
     , pSlim         :: Bool
     , pStack        :: Bool -- autoset
