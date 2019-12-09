@@ -15,7 +15,7 @@ import Zinza
 
 imageDefs :: Images
 imageDefs = Images
-    [ mk dist ver slim
+    [ img
     | dist <- [Stretch ..]
     , slim <- [True, False]
     , ver  <- [ Version [8,8,1]
@@ -27,10 +27,17 @@ imageDefs = Images
               , Version [7,8,4]
               , Version [7,6,3]
               ]
+    , img <- mk dist ver slim
     ]
   where
-    mk :: Distribution -> Version -> Bool -> Image
-    mk dist gv slim = Image fd fp Params
+    mk :: Distribution -> Version -> Bool -> [Image]
+    mk dist gv slim =
+        [ mk' (dispVersion gv)                dist gv slim
+        , mk' (dispVersion (majorVersion gv)) dist gv slim
+        ]
+
+    mk' :: String -> Distribution -> Version -> Bool -> Image
+    mk' ver dist gv slim = Image fd fp Params
         { pTag          = tag
         , pDistribution = dist
         , pGhcVersion   = gv
@@ -42,14 +49,14 @@ imageDefs = Images
         , pIsDebian     = dist `elem` [Stretch, Buster]
         }
       where
-        tag = dispVersion (majorVersion gv)
+        tag = ver
             ++ "-" ++ dispDistribution dist
             ++ if slim then "-slim" else ""
 
-        dir = dispVersion (majorVersion gv) </> dispDistribution dist
+        dir = ver </> dispDistribution dist
         fd | slim      = dir </> "slim"
            | otherwise = dir
-        fp = fd </> "Dockerfile" 
+        fp = fd </> "Dockerfile"
 
 main :: IO ()
 main = do
