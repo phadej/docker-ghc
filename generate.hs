@@ -23,9 +23,9 @@ imageDefs = Images
               , Version [8,4,4]
               , Version [8,2,2]
               , Version [8,0,2]
-              -- , Version [7,10,3]
-              -- , Version [7,8,4]
-              -- , Version [7,6,3]
+              , Version [7,10,3]
+              , Version [7,8,4]
+              , Version [7,6,3]
               ]
     ]
   where
@@ -35,10 +35,9 @@ imageDefs = Images
         , pDistribution = dist
         , pGhcVersion   = gv
         , pSlim         = slim
-        -- See stack-shasum.sh
-        --  
         , pStack        = gv >= Version [8,2] -- I don't know what stack supports
         , pStackVersion = Version [2,1,3]
+        -- See stack-shasum.sh
         , pStackSha256  = "c724b207831fe5f06b087bac7e01d33e61a1c9cad6be0468f9c117d383ec5673"
         , pIsDebian     = dist `elem` [Stretch, Buster]
         }
@@ -60,7 +59,7 @@ main = do
     contentsM <- templateM $ Images
         [ img
         | img <- images imageDefs
-        , pDistribution (imgParams img) /= Buster -- TODO
+        , pDistribution (imgParams img) == Bionic -- TODO
         ]
     writeFile "Makefile" contentsM
 

@@ -28,11 +28,13 @@ RUN apt-get update && \
 {% else %}
         ghc-{{ghcVersion}}-prof libtinfo-dev && \
 {% endif %}
+{% if stack %}
     curl -fSL https://github.com/commercialhaskell/stack/releases/download/v{{stackVersion}}/stack-{{stackVersion}}-linux-x86_64.tar.gz -o stack.tar.gz && \
     echo "{{stackSha256}}  stack.tar.gz" | sha256sum -c - && \
     tar -xf stack.tar.gz -C /usr/local/bin --strip-components=1 && \
     /usr/local/bin/stack config set system-ghc --global true && \
     /usr/local/bin/stack config set install-ghc --global false && \
+{% endif %}
     rm -rf "$GNUPGHOME" /var/lib/apt/lists/* /stack.tar.gz
 
 ENV PATH /root/.cabal/bin:/root/.local/bin:/opt/cabal/3.0/bin:/opt/ghc/{{ghcVersion}}/bin:$PATH
