@@ -12,7 +12,7 @@ push : push-{{image.params.tag}}
 {% endfor %}
 
 {% for image in images %}
-push-{{image.params.tag}} :
+push-{{image.params.tag}} : .build/{{image.params.tag}}
 	docker push phadej/ghc:{{image.params.tag}}
 {% endfor %}
 
