@@ -66,7 +66,7 @@ main = do
     contentsM <- templateM $ Images
         [ img
         | img <- images imageDefs
-        , pDistribution (imgParams img) == Bionic -- TODO
+        , pDistribution (imgParams img) `elem` [Xenial, Bionic] -- TODO
         ]
     writeFile "Makefile" contentsM
 
