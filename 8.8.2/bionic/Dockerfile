@@ -1,7 +1,7 @@
 ## Dockerfile for a haskell environment
-## TAG 8.8-xenial
+## TAG 8.8.2-bionic
 ##
-FROM       buildpack-deps:xenial
+FROM       buildpack-deps:bionic
 
 ## ensure locale is set during build
 ENV LANG C.UTF-8

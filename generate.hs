@@ -18,7 +18,7 @@ imageDefs = Images
     [ img
     | dist <- [Stretch ..]
     , slim <- [True, False]
-    , ver  <- [ Version [8,8,1]
+    , ver  <- [ Version [8,8,2]
               , Version [8,6,5]
               , Version [8,4,4]
               , Version [8,2,2]
@@ -83,8 +83,9 @@ newtype Images = Images { images :: [Image] }
   deriving (Show, Generic)
 
 instance Zinza Images where
-    toType  = genericToType id
-    toValue = genericToValue id
+    toType    = genericToType id
+    toValue   = genericToValue id
+    fromValue = genericFromValue id
 
 data Image = Image
     { imgDirectory :: FilePath
@@ -94,8 +95,9 @@ data Image = Image
   deriving (Show, Generic)
 
 instance Zinza Image where
-    toType  = genericToTypeSFP
-    toValue = genericToValueSFP
+    toType    = genericToTypeSFP
+    toValue   = genericToValueSFP
+    fromValue = genericFromValueSFP
 
 newtype Version = Version [Int]
   deriving (Show,Eq,Ord)
@@ -109,8 +111,9 @@ majorVersion v@(Version [_])     = v
 majorVersion v@(Version (x:y:_)) = Version [x,y]
 
 instance Zinza Version where
-    toType _ = TyString Nothing
-    toValue  = VString . dispVersion
+    toType _    = TyString Nothing
+    toValue     = VString . dispVersion
+    fromValue _ = error "I'm lazy"
 
 data Distribution = Stretch | Buster | Xenial | Bionic
   deriving (Show, Eq, Enum, Bounded)
@@ -119,8 +122,9 @@ dispDistribution :: Distribution -> String
 dispDistribution = map toLower . show
 
 instance Zinza Distribution where
-    toType _ = TyString Nothing
-    toValue  = VString . dispDistribution
+    toType _    = TyString Nothing
+    toValue     = VString . dispDistribution
+    fromValue _ = error "I'm lazy"
 
 data Params = Params
     { pTag          :: String
@@ -135,5 +139,6 @@ data Params = Params
   deriving (Show, Generic)
 
 instance Zinza Params where
-    toType  = genericToTypeSFP
-    toValue = genericToValueSFP
+    toType    = genericToTypeSFP
+    toValue   = genericToValueSFP
+    fromValue = genericFromValueSFP

@@ -1,17 +1,18 @@
 ## Dockerfile for a haskell environment
-## TAG 8.8-xenial
+## TAG 8.8.2-buster-slim
 ##
-FROM       buildpack-deps:xenial
+FROM       debian:buster
 
 ## ensure locale is set during build
 ENV LANG C.UTF-8
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends gnupg ca-certificates dirmngr curl git software-properties-common && \
-    apt-add-repository -y "ppa:hvr/ghc" && \
+    apt-get install -y --no-install-recommends gnupg ca-certificates dirmngr curl git && \
+    echo 'deb http://downloads.haskell.org/debian buster main' > /etc/apt/sources.list.d/ghc.list && \
+    apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA3CBA3FFE22B574 && \
     apt-get update && \
     apt-get install -y --no-install-recommends ghc-8.8.2 cabal-install-3.0 \
-        ghc-8.8.2-prof libtinfo-dev && \
+        zlib1g-dev libtinfo-dev libsqlite3-dev g++ netbase xz-utils make && \
     curl -fSL https://github.com/commercialhaskell/stack/releases/download/v2.1.3/stack-2.1.3-linux-x86_64.tar.gz -o stack.tar.gz && \
     echo "c724b207831fe5f06b087bac7e01d33e61a1c9cad6be0468f9c117d383ec5673  stack.tar.gz" | sha256sum -c - && \
     tar -xf stack.tar.gz -C /usr/local/bin --strip-components=1 && \

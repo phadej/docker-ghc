@@ -1,5 +1,5 @@
 ## Dockerfile for a haskell environment
-## TAG 8.8-xenial
+## TAG 8.8.2-xenial
 ##
 FROM       buildpack-deps:xenial
 
