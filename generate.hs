@@ -18,7 +18,8 @@ imageDefs = Images
     [ img
     | dist <- [Stretch ..]
     , slim <- [True, False]
-    , ver  <- [ Version [8,8,3]
+    , ver  <- [ Version [8,10,1]
+              , Version [8,8,3]
               , Version [8,6,5]
               , Version [8,4,4]
               , Version [8,2,2]
@@ -66,7 +67,7 @@ main = do
     contentsM <- templateM $ Images
         [ img
         | img <- images imageDefs
-        , pDistribution (imgParams img) `elem` [Xenial, Bionic] -- TODO
+        -- , pDistribution (imgParams img) `elem` [Xenial, Bionic] -- TODO
         ]
     writeFile "Makefile" contentsM
 
