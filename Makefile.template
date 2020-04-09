@@ -1,7 +1,8 @@
 .PHONY : generate build push
 
 generate :
-	runghc generate.hs
+	cabal-env -n docker-ghc zinza filepath directory
+	runghc -package-env=docker-ghc generate.hs
 
 {% for image in images %}
 build : .build/{{image.params.tag}}
@@ -12,6 +13,7 @@ push : push-{{image.params.tag}}
 {% endfor %}
 
 {% for image in images %}
+push-{{image.params.ghcVersion}} : push-{{image.params.tag}}
 push-{{image.params.tag}} : .build/{{image.params.tag}}
 	docker push phadej/ghc:{{image.params.tag}}
 {% endfor %}
