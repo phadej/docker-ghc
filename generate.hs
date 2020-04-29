@@ -44,9 +44,9 @@ imageDefs = Images
         , pGhcVersion   = gv
         , pSlim         = slim
         , pStack        = gv >= Version [8,2] -- I don't know what stack supports
-        , pStackVersion = Version [2,1,3]
+        , pStackVersion = Version [2,3,1]
         -- See stack-shasum.sh
-        , pStackSha256  = "c724b207831fe5f06b087bac7e01d33e61a1c9cad6be0468f9c117d383ec5673"
+        , pStackSha256  = "b753cd21d446aea16a221326ec686e3acdf1b146c714a77b5d27fd855475554d"
         , pIsDebian     = dist `elem` [Stretch, Buster]
         }
       where
