@@ -7,7 +7,7 @@
 # gpg --batch --keyserver ha.pool.sks-keyservers.net --recv-keys 2C6A674E85EE3FB896AFC9B965101FF31C5C154D
 #
 
-STACKVER=2.1.3
+STACKVER=2.3.1
 
 curl -fSL https://github.com/commercialhaskell/stack/releases/download/v${STACKVER}/stack-${STACKVER}-linux-x86_64.tar.gz -o stack.tar.gz && \
 curl -fSL https://github.com/commercialhaskell/stack/releases/download/v${STACKVER}/stack-${STACKVER}-linux-x86_64.tar.gz.asc -o stack.tar.gz.asc && \
@@ -15,4 +15,3 @@ curl -fSL https://github.com/commercialhaskell/stack/releases/download/v${STACKV
 gpg --batch --trusted-key 0x575159689BEFB442 --verify stack.tar.gz.asc stack.tar.gz
 
 sha256sum stack.tar.gz
- 
