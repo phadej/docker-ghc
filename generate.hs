@@ -18,8 +18,8 @@ imageDefs = Images
     [ img
     | dist <- [Stretch ..]
     , slim <- [True, False]
-    , ver  <- [ Version [8,10,1]
-              , Version [8,8,3]
+    , ver  <- [ Version [8,10,2]
+              , Version [8,8,4]
               , Version [8,6,5]
               , Version [8,4,4]
               , Version [8,2,2]
@@ -28,6 +28,7 @@ imageDefs = Images
               , Version [7,8,4]
               , Version [7,6,3]
               ]
+    , if dist == Focal then ver >= Version [8] else True
     , img <- mk dist ver slim
     ]
   where
@@ -43,7 +44,7 @@ imageDefs = Images
         , pDistribution = dist
         , pGhcVersion   = gv
         , pSlim         = slim
-        , pStack        = gv >= Version [8,2] -- I don't know what stack supports
+        , pStack        = False -- gv >= Version [8,2] -- I don't know what stack supports
         , pStackVersion = Version [2,1,3]
         -- See stack-shasum.sh
         , pStackSha256  = "c724b207831fe5f06b087bac7e01d33e61a1c9cad6be0468f9c117d383ec5673"
@@ -72,6 +73,7 @@ main = do
     writeFile "Makefile" contentsM
 
     forM_ (images imageDefs) $ \(Image _ fp p) -> do
+        putStrLn $ pTag p
         contents <- template p
         createDirectoryIfMissing True (takeDirectory fp)
         writeFile fp contents
@@ -116,7 +118,9 @@ instance Zinza Version where
     toValue     = VString . dispVersion
     fromValue _ = error "I'm lazy"
 
-data Distribution = Stretch | Buster | Xenial | Bionic
+data Distribution
+    = Stretch | Buster
+    | Xenial | Bionic | Focal
   deriving (Show, Eq, Enum, Bounded)
 
 dispDistribution :: Distribution -> String

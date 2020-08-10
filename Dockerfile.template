@@ -10,6 +10,10 @@ FROM       buildpack-deps:{{distribution}}
 ## ensure locale is set during build
 ENV LANG C.UTF-8
 
+## for apt to be noninteractive
+ENV DEBIAN_FRONTEND noninteractive
+ENV DEBCONF_NONINTERACTIVE_SEEN true
+
 RUN apt-get update && \
 {% if isDebian %}
     apt-get install -y --no-install-recommends gnupg ca-certificates dirmngr curl git && \
