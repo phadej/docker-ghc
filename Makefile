@@ -130,6 +130,12 @@ build : .build/7.8.4-bionic-slim
 build : .build/7.8-bionic-slim
 build : .build/7.6.3-bionic-slim
 build : .build/7.6-bionic-slim
+build : .build/7.4.2-bionic-slim
+build : .build/7.4-bionic-slim
+build : .build/7.2.2-bionic-slim
+build : .build/7.2-bionic-slim
+build : .build/7.0.4-bionic-slim
+build : .build/7.0-bionic-slim
 build : .build/8.10.2-bionic
 build : .build/8.10-bionic
 build : .build/8.8.4-bionic
@@ -148,6 +154,12 @@ build : .build/7.8.4-bionic
 build : .build/7.8-bionic
 build : .build/7.6.3-bionic
 build : .build/7.6-bionic
+build : .build/7.4.2-bionic
+build : .build/7.4-bionic
+build : .build/7.2.2-bionic
+build : .build/7.2-bionic
+build : .build/7.0.4-bionic
+build : .build/7.0-bionic
 build : .build/8.10.2-focal-slim
 build : .build/8.10-focal-slim
 build : .build/8.8.4-focal-slim
@@ -299,6 +311,12 @@ push : push-7.8.4-bionic-slim
 push : push-7.8-bionic-slim
 push : push-7.6.3-bionic-slim
 push : push-7.6-bionic-slim
+push : push-7.4.2-bionic-slim
+push : push-7.4-bionic-slim
+push : push-7.2.2-bionic-slim
+push : push-7.2-bionic-slim
+push : push-7.0.4-bionic-slim
+push : push-7.0-bionic-slim
 push : push-8.10.2-bionic
 push : push-8.10-bionic
 push : push-8.8.4-bionic
@@ -317,6 +335,12 @@ push : push-7.8.4-bionic
 push : push-7.8-bionic
 push : push-7.6.3-bionic
 push : push-7.6-bionic
+push : push-7.4.2-bionic
+push : push-7.4-bionic
+push : push-7.2.2-bionic
+push : push-7.2-bionic
+push : push-7.0.4-bionic
+push : push-7.0-bionic
 push : push-8.10.2-focal-slim
 push : push-8.10-focal-slim
 push : push-8.8.4-focal-slim
@@ -720,6 +744,24 @@ push-7.6.3-bionic-slim : .build/7.6.3-bionic-slim
 push-7.6.3 : push-7.6-bionic-slim
 push-7.6-bionic-slim : .build/7.6-bionic-slim
 	docker push phadej/ghc:7.6-bionic-slim
+push-7.4.2 : push-7.4.2-bionic-slim
+push-7.4.2-bionic-slim : .build/7.4.2-bionic-slim
+	docker push phadej/ghc:7.4.2-bionic-slim
+push-7.4.2 : push-7.4-bionic-slim
+push-7.4-bionic-slim : .build/7.4-bionic-slim
+	docker push phadej/ghc:7.4-bionic-slim
+push-7.2.2 : push-7.2.2-bionic-slim
+push-7.2.2-bionic-slim : .build/7.2.2-bionic-slim
+	docker push phadej/ghc:7.2.2-bionic-slim
+push-7.2.2 : push-7.2-bionic-slim
+push-7.2-bionic-slim : .build/7.2-bionic-slim
+	docker push phadej/ghc:7.2-bionic-slim
+push-7.0.4 : push-7.0.4-bionic-slim
+push-7.0.4-bionic-slim : .build/7.0.4-bionic-slim
+	docker push phadej/ghc:7.0.4-bionic-slim
+push-7.0.4 : push-7.0-bionic-slim
+push-7.0-bionic-slim : .build/7.0-bionic-slim
+	docker push phadej/ghc:7.0-bionic-slim
 push-8.10.2 : push-8.10.2-bionic
 push-8.10.2-bionic : .build/8.10.2-bionic
 	docker push phadej/ghc:8.10.2-bionic
@@ -774,6 +816,24 @@ push-7.6.3-bionic : .build/7.6.3-bionic
 push-7.6.3 : push-7.6-bionic
 push-7.6-bionic : .build/7.6-bionic
 	docker push phadej/ghc:7.6-bionic
+push-7.4.2 : push-7.4.2-bionic
+push-7.4.2-bionic : .build/7.4.2-bionic
+	docker push phadej/ghc:7.4.2-bionic
+push-7.4.2 : push-7.4-bionic
+push-7.4-bionic : .build/7.4-bionic
+	docker push phadej/ghc:7.4-bionic
+push-7.2.2 : push-7.2.2-bionic
+push-7.2.2-bionic : .build/7.2.2-bionic
+	docker push phadej/ghc:7.2.2-bionic
+push-7.2.2 : push-7.2-bionic
+push-7.2-bionic : .build/7.2-bionic
+	docker push phadej/ghc:7.2-bionic
+push-7.0.4 : push-7.0.4-bionic
+push-7.0.4-bionic : .build/7.0.4-bionic
+	docker push phadej/ghc:7.0.4-bionic
+push-7.0.4 : push-7.0-bionic
+push-7.0-bionic : .build/7.0-bionic
+	docker push phadej/ghc:7.0-bionic
 push-8.10.2 : push-8.10.2-focal-slim
 push-8.10.2-focal-slim : .build/8.10.2-focal-slim
 	docker push phadej/ghc:8.10.2-focal-slim
@@ -1225,6 +1285,24 @@ push-8.0-focal : .build/8.0-focal
 .build/7.6-bionic-slim : .build
 	docker build -t phadej/ghc:7.6-bionic-slim 7.6/bionic/slim
 	touch .build/7.6-bionic-slim
+.build/7.4.2-bionic-slim : .build
+	docker build -t phadej/ghc:7.4.2-bionic-slim 7.4.2/bionic/slim
+	touch .build/7.4.2-bionic-slim
+.build/7.4-bionic-slim : .build
+	docker build -t phadej/ghc:7.4-bionic-slim 7.4/bionic/slim
+	touch .build/7.4-bionic-slim
+.build/7.2.2-bionic-slim : .build
+	docker build -t phadej/ghc:7.2.2-bionic-slim 7.2.2/bionic/slim
+	touch .build/7.2.2-bionic-slim
+.build/7.2-bionic-slim : .build
+	docker build -t phadej/ghc:7.2-bionic-slim 7.2/bionic/slim
+	touch .build/7.2-bionic-slim
+.build/7.0.4-bionic-slim : .build
+	docker build -t phadej/ghc:7.0.4-bionic-slim 7.0.4/bionic/slim
+	touch .build/7.0.4-bionic-slim
+.build/7.0-bionic-slim : .build
+	docker build -t phadej/ghc:7.0-bionic-slim 7.0/bionic/slim
+	touch .build/7.0-bionic-slim
 .build/8.10.2-bionic : .build
 	docker build -t phadej/ghc:8.10.2-bionic 8.10.2/bionic
 	touch .build/8.10.2-bionic
@@ -1279,6 +1357,24 @@ push-8.0-focal : .build/8.0-focal
 .build/7.6-bionic : .build
 	docker build -t phadej/ghc:7.6-bionic 7.6/bionic
 	touch .build/7.6-bionic
+.build/7.4.2-bionic : .build
+	docker build -t phadej/ghc:7.4.2-bionic 7.4.2/bionic
+	touch .build/7.4.2-bionic
+.build/7.4-bionic : .build
+	docker build -t phadej/ghc:7.4-bionic 7.4/bionic
+	touch .build/7.4-bionic
+.build/7.2.2-bionic : .build
+	docker build -t phadej/ghc:7.2.2-bionic 7.2.2/bionic
+	touch .build/7.2.2-bionic
+.build/7.2-bionic : .build
+	docker build -t phadej/ghc:7.2-bionic 7.2/bionic
+	touch .build/7.2-bionic
+.build/7.0.4-bionic : .build
+	docker build -t phadej/ghc:7.0.4-bionic 7.0.4/bionic
+	touch .build/7.0.4-bionic
+.build/7.0-bionic : .build
+	docker build -t phadej/ghc:7.0-bionic 7.0/bionic
+	touch .build/7.0-bionic
 .build/8.10.2-focal-slim : .build
 	docker build -t phadej/ghc:8.10.2-focal-slim 8.10.2/focal/slim
 	touch .build/8.10.2-focal-slim

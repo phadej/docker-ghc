@@ -27,8 +27,12 @@ imageDefs = Images
               , Version [7,10,3]
               , Version [7,8,4]
               , Version [7,6,3]
+              , Version [7,4,2]
+              , Version [7,2,2]
+              , Version [7,0,4]
               ]
     , if dist == Focal then ver >= Version [8] else True
+    , if ver < Version [7,6] then dist == Bionic else True
     , img <- mk dist ver slim
     ]
   where
