@@ -24,7 +24,7 @@ RUN apt-get update && \
     apt-add-repository -y "ppa:hvr/ghc" && \
 {% endif %}
     apt-get update && \
-    apt-get install -y --no-install-recommends ghc-{{ghcVersion}} cabal-install-3.2 \
+    apt-get install -y --no-install-recommends ghc-{{ghcVersion}} cabal-install-3.4 \
 {% if slim %}
 {# See https://github.c om/docker-library/buildpack-deps/blob/master/buster/Dockerfile #}
 {# And https://github.com/docker-library/buildpack-deps/blob/master/buster/scm/Dockerfile #}
@@ -41,7 +41,7 @@ RUN apt-get update && \
 {% endif %}
     rm -rf "$GNUPGHOME" /var/lib/apt/lists/* /stack.tar.gz
 
-ENV PATH /root/.cabal/bin:/root/.local/bin:/opt/cabal/3.2/bin:/opt/ghc/{{ghcVersion}}/bin:$PATH
+ENV PATH /root/.cabal/bin:/root/.local/bin:/opt/cabal/3.4/bin:/opt/ghc/{{ghcVersion}}/bin:$PATH
 
 ## run ghci by default unless a command is specified
 CMD ["ghci"]
