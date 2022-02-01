@@ -14,11 +14,11 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends gnupg ca-certificates dirmngr curl git software-properties-common && \
     apt-add-repository -y "ppa:hvr/ghc" && \
     apt-get update && \
-    apt-get install -y --no-install-recommends ghc-7.8.4 cabal-install-3.4 \
+    apt-get install -y --no-install-recommends ghc-7.8.4 cabal-install-3.6 \
         ghc-7.8.4-prof libtinfo-dev && \
     rm -rf "$GNUPGHOME" /var/lib/apt/lists/* /stack.tar.gz
 
-ENV PATH /root/.cabal/bin:/root/.local/bin:/opt/cabal/3.4/bin:/opt/ghc/7.8.4/bin:$PATH
+ENV PATH /root/.cabal/bin:/root/.local/bin:/opt/cabal/3.6/bin:/opt/ghc/7.8.4/bin:$PATH
 
 ## run ghci by default unless a command is specified
 CMD ["ghci"]

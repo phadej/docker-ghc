@@ -18,8 +18,9 @@ imageDefs = Images
     [ img
     | dist <- [Stretch ..]
     , slim <- [True, False]
-    , ver  <- [ Version [9,0,1]
-              , Version [8,10,4]
+    , ver  <- [ Version [9,2,1]
+              , Version [9,0,2]
+              , Version [8,10,7]
               , Version [8,8,4]
               , Version [8,6,5]
               , Version [8,4,4]
